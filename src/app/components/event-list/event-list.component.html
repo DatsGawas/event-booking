@@ -1,0 +1,48 @@
+<div class="card">
+  <div class="card-header">
+   <span><b> Event List</b> </span>
+    <span style="float: right">
+
+      <input type="email"  (input)="handleInputEvent($event)" class="form-control form-control-sm" id="colFormLabelSm" placeholder="SEARCH EVENTS">
+    </span>
+  </div>
+  <div class="card-body">
+    <div class="d-table">
+      <div class="d-table-header">
+        <div class="d-table-col" *ngFor="let column of columnData">
+          {{column.label}}
+        </div>
+      </div>
+        <ng-container *ngFor="let data of eventData;">
+          <div class="d-table-row" >
+            <div class="d-table-col" *ngFor="let column of columnData; let last= last; let index=index"  [attr.data-label]="column.label">
+              <ng-container *ngIf="!last; else elseBlock">
+
+                <ng-container *ngIf="index + 1 != 2">
+                  {{data[column.dataKey]}}
+                </ng-container>
+                <ng-container *ngIf="index + 1 === 2">
+                  <img style="height: 160px" [attr.src]="data[column.dataKey]" class="rounded" alt="Responsive image">
+
+                </ng-container>
+              </ng-container>
+              <ng-template #elseBlock>
+                <span style="padding-right: 20px">{{data[column.dataKey]}}</span>
+                <ng-container *ngIf="data[column.dataKey] !== 0; else soldOut">
+                  <button  type="button" class="btn btn-primary btn-sm" (click)="handleBookNow(data)">Book Now</button>
+                </ng-container>
+                <ng-template #soldOut>
+                  <a style="color: red">Sold Out</a>
+                </ng-template>
+
+              </ng-template>
+            </div>
+
+          </div>
+      </ng-container>
+    </div>
+    <ng-container *ngIf="eventData.length == 0">
+          <h4>No results found!</h4>
+    </ng-container>
+  </div>
+</div>
