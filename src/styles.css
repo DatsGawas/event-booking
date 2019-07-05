@@ -128,11 +128,11 @@
     font-size: .8em;
     text-align: right;
     width: auto !important;
+  }
 
   .float-right {
     float: unset !important;
   }
-}
 
 .d-table .d-table-col:before {
   content: attr(data-label);

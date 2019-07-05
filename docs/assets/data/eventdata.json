@@ -1,0 +1,20 @@
+[
+  {
+    "eventName": " SANDEEP SHARMA LIVE",
+    "eventImage": "assets/images/standup2.jpg",
+    "eventDate": "30/7/2019",
+    "availableSeats": 12
+  },
+  {
+    "eventName": "Bas Kar BASSI",
+    "eventImage": "assets/images/standup3.jpg",
+    "eventDate": "20/7/2019",
+    "availableSeats": 0
+  },
+  {
+    "eventName": "AAKASH MEHTA [NASTY] ",
+    "eventImage": "assets/images/standup4.jpg",
+    "eventDate": "12/8/2019",
+    "availableSeats": 12
+  }
+]
