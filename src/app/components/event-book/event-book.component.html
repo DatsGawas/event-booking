@@ -1,28 +1,79 @@
-<!--<div class="card">
-  <div class="card-header">
-    <div> <b>{{_SDService.selectedEventData.eventName}}</b> </div>
-    <div>Number of available seats : {{_SDService.selectedEventData.availableSeats}}</div>
-  </div>
-  <div class="card-body">
-  </div>
-  <div class="card-footer text-right">
-    <button type="button" class="btn btn-light ">Cancel</button>
-    <button type="button" class="btn btn-primary ">Submit</button>
-  </div>
-</div>-->
 
 
-<div class="card text-center">
-  <div class="card-header">
-    <div> <b>{{_SDService.selectedEventData.eventName}}</b> </div>
-    <div>Number of available seats : {{_SDService.selectedEventData.availableSeats}}</div>
-  </div>
-  <div class="card-body">
-    <h5 class="card-title">Special title treatment</h5>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-  </div>
-  <div class="card-footer text-muted">
-    <button type="button" class="btn btn-light ">Cancel</button>
-    <button type="button" class="btn btn-primary ">Submit</button>
+<div class="row justify-content-center">
+  <div class="col-10">
+    <div class="card">
+      <div class="card-header">
+        <div> <b>{{_SDService.selectedEventData?.eventName}}</b> </div>
+        <div>Number of available seats : {{_SDService.selectedEventData?.availableSeats}}</div>
+        <div class="booking-status"><b>{{bookingStatusMsg}}</b></div>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="eventBookingForm">
+          <div class="form-group">
+            <div class="row">
+              <div class="col-lg-6 col-sm-12">
+                <label for="userName">Name</label>
+                <input formControlName="name" type="text" class="form-control" id="userName" aria-describedby="emailHelp" placeholder="Enter Name">
+                <small *ngIf="isSubmitted && formControls.name.errors && formControls.name.errors['required']"  class="form-text text-muted error-color">Please enter your name.</small>
+                <small *ngIf="isSubmitted && formControls.name.errors && formControls.name.errors['pattern']"  class="form-text text-muted error-color">Only letters and spaces are allowed.</small>
+
+              </div>
+              <div class="col-lg-6 col-sm-12">
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" formControlName="email" class="form-control" id="email" placeholder="Enter Email">
+                  <small *ngIf="isSubmitted && formControls.email.errors && formControls.email.errors['required']"  class="form-text text-muted error-color">Please enter your email.</small>
+                  <small *ngIf="isSubmitted && formControls.email.errors && formControls.email.errors['pattern']"  class="form-text text-muted error-color">Invalid email.</small>
+
+                </div>
+              </div>
+
+            </div>
+
+            <div class="row">
+              <div class="col-lg-6 col-sm-12">
+                <label for="phoneNumber">Phone Number</label>
+                <input type="text" formControlName="phoneNumber" class="form-control" id="phoneNumber" aria-describedby="phoneNumber" placeholder="Enter Phone Number">
+                <ng-container *ngIf="isSubmitted && formControls.phoneNumber.errors">
+                  <small *ngIf="formControls.phoneNumber.errors['pattern'] || formControls.phoneNumber.errors['required']"  class="form-text text-muted error-color">Please enter 10 digit phone number</small>
+
+                </ng-container>
+
+              </div>
+              <div class="col-lg-6 col-sm-12">
+                <div class="form-group">
+                  <label for="noOfSeats">No. of Seats</label>
+                  <select class="form-control" id="noOfSeats" formControlName="noOfSeat"  (change)="handleSeatSelect($event)">
+                    <option selected>Choose...</option>
+                    <option [attr.value]="seat" *ngFor="let seat of noOfSeatsData">{{seat}}</option>
+                  </select>
+                  <small *ngIf="isSubmitted && formControls.noOfSeat.errors && formControls.noOfSeat.errors.required "  class="form-text text-muted error-color">Please enter number of seats</small>
+
+                </div>
+              </div>
+
+            </div>
+
+            <div class="row"  formArrayName="attendees">
+              <div class="col-12 col-sm-12" *ngFor="let attendee of attendees.controls; let i=index">
+                <label for="Attendee">Name of Attendee {{i+2}}</label>
+                <input type="text" [formControlName]="i" class="form-control" id="Attendee" aria-describedby="Attendee" placeholder="Enter Attendee name">
+                <small *ngIf="isSubmitted && formControls.attendees.controls[i].errors"
+                       class="form-text text-muted error-color">Please enter the name of Attendee {{i+2}}</small>
+
+              </div>
+            </div>
+
+          </div>
+        </form>
+      </div>
+      <div class="card-footer text-muted text-right">
+        <button type="button" class="btn btn-light " (click)="handleCancel()" [disabled]="isSubmitted && !eventBookingForm.invalid">Cancel</button>
+        <button type="button" class="btn btn-primary " (click)="handleSubmit()"  [disabled]="isSubmitted && !eventBookingForm.invalid">Submit</button>
+      </div>
+    </div>
   </div>
 </div>
+
+

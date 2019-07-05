@@ -42,6 +42,8 @@ export class EventListComponent implements OnInit {
     this.getEventData();
   }
 
+  /* GET EVENT DATA FROM JSON */
+
   getEventData() {
     this._http.get('assets/data/eventdata.json').subscribe((res: IEventList[]) => {
       this.eventData = res;
@@ -50,10 +52,14 @@ export class EventListComponent implements OnInit {
 
   }
 
+  /*ON BOOK EVENT HANDLE */
+
   handleBookNow(eventData: IEventList) {
     this._SDService.selectedEventData = eventData;
    this._route.navigate(['event-book']);
   }
+
+  /* FILTERING OPERATION */
 
   handleInputEvent(event: any) {
     const resultArray: IEventList[] = [];

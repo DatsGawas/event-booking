@@ -98,7 +98,7 @@
     border: 0;
   }
 
-  .d-table .d-table-header{
+  .d-table .d-table-header {
     border: none;
     clip: rect(0 0 0 0);
     height: 1px;
@@ -110,49 +110,64 @@
     background-color: lightgrey;
   }
 
-
-  .d-table .d-table-row{
+  .d-table .d-table-row {
 
     display: block;
     margin-bottom: .625em;
-    height: auto!important;
+    height: auto !important;
   }
 
-  .d-table .d-table-header .d-table-col{
-    height: auto!important;
+  .d-table .d-table-header .d-table-col {
+    height: auto !important;
     font-weight: 500;
   }
-  .d-table .d-table-col{
+
+  .d-table .d-table-col {
     border-bottom: 1px solid lightgrey;
     display: block;
     font-size: .8em;
     text-align: right;
-    width: auto!important;
+    width: auto !important;
 
-  .float-right{
-    float: unset!important;
+  .float-right {
+    float: unset !important;
   }
 }
 
-.d-table .d-table-col:before{
+.d-table .d-table-col:before {
   content: attr(data-label);
   float: left;
   font-weight: bold;
 }
+
 .col-hidden {
-  display: none!important;
+  display: none !important;
 }
 
 .checkbox-col {
-  text-align: unset!important;
+  text-align: unset !important;
 }
+
 .d-table-icon-right {
   float: right;
 }
+
 .text-input-width {
   width: 92%;
 }
+
 }
+
+
+.error-color {
+  color: red!important;
+}
+
+
+.booking-status {
+  color: green;
+}
+
 
 
 

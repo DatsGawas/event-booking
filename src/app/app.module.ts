@@ -7,6 +7,7 @@ import { EventListComponent } from './components/event-list/event-list.component
 import { EventBookComponent } from './components/event-book/event-book.component';
 import {HttpClientModule} from "@angular/common/http";
 import { PageNotfoundComponent } from './components/page-notfound/page-notfound.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -16,7 +17,7 @@ import { PageNotfoundComponent } from './components/page-notfound/page-notfound.
     PageNotfoundComponent
   ],
   imports: [
-    BrowserModule, HttpClientModule,
+    BrowserModule, HttpClientModule, ReactiveFormsModule,
     AppRoutingModule
   ],
   providers: [],
