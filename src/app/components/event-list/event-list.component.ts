@@ -62,12 +62,17 @@ export class EventListComponent implements OnInit {
   /* FILTERING OPERATION */
 
   handleInputEvent(event: any) {
-    const resultArray: IEventList[] = [];
-    this.dummyEventData.filter((item) => {
-      if ( item.eventName.toLowerCase().includes(event.target.value.toLocaleLowerCase()) && item.availableSeats !== 0) {
-         resultArray.push(item);
-      }
-    });
+    let resultArray: IEventList[] = [];
+    if (event.target.value !== '') {
+      this.dummyEventData.filter((item) => {
+        if ( item.eventName.toLowerCase().includes(event.target.value.toLocaleLowerCase()) && item.availableSeats !== 0) {
+          resultArray.push(item);
+        }
+      });
+    } else {
+      resultArray = Object.assign([], this.dummyEventData);
+    }
+
     this.eventData = resultArray;
   }
 
