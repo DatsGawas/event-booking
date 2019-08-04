@@ -56,7 +56,7 @@ export class EventListComponent implements OnInit {
 
   handleBookNow(eventData: IEventList) {
     this._SDService.selectedEventData = eventData;
-   this._route.navigate(['event-book']);
+   this._route.navigate(['book-seat']);
   }
 
   /* FILTERING OPERATION */

@@ -7,7 +7,7 @@ import {PageNotfoundComponent} from "./components/page-notfound/page-notfound.co
 const routes: Routes = [
   { path: '', redirectTo: 'event-list', pathMatch: 'full'},
   { path: 'event-list', component: EventListComponent},
-  { path: 'event-book', component: EventBookComponent},
+  { path: 'book-seat', component: EventBookComponent},
   { path: '**', component: PageNotfoundComponent}
   ];
 
