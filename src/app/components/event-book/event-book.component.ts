@@ -59,6 +59,9 @@ export class EventBookComponent implements OnInit {
     } else {
       console.log(JSON.stringify(this.eventBookingForm.value));
       this.bookingStatusMsg = 'Tickets booked';
+      setTimeout(() => {
+        this._route.navigate(['event-list']);
+      }, 3000);
     }
   }
 
