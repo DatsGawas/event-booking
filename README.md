@@ -2,7 +2,7 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.1.
 
-[See Demo](https://datsgawas.github.io/event-booking/event-list)
+[See Demo](https://datsgawas.github.io/event-booking/)
 
 ## Development server
 
